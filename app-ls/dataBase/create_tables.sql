@@ -1,18 +1,19 @@
 -- Cria a tabela Jogadores
-CREATE TABLE Jogadores (
+CREATE TABLE IF NOT EXISTS Jogadores (
     id INTEGER PRIMARY KEY,
-    Nome TEXT NOT NULL
+    nome TEXT UNIQUE NOT NULL,
+    score INTEGER
 );
 
 -- Cria a tabela Palavras
-CREATE TABLE Palavras (
+CREATE TABLE IF NOT EXISTS Palavras (
     id INTEGER PRIMARY KEY,
-    palavra TEXT NOT NULL,
+    palavra TEXT UNIQUE NOT NULL,
     dica TEXT NOT NULL
 );
 
 -- Cria a tabela palavras_adivinhadas_por_jogador
-CREATE TABLE palavras_adivinhadas_por_jogador (
+CREATE TABLE IF NOT EXISTS palavras_adivinhadas_por_jogador (
     id_jogador INTEGER,
     id_palavra INTEGER,
     PRIMARY KEY (id_jogador, id_palavra),
