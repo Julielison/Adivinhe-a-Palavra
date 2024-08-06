@@ -12,46 +12,68 @@ export const getPlayerDataByName = (playerName, callback) => {
   // Criar uma instância do banco de dados
   const db = new sqlite3.Database(dbPath);
 
-  // Consulta SQL para recuperar score e IDs das palavras adivinhadas
-  const query = `
-    SELECT j.id AS jogador_id, j.nome, j.score, GROUP_CONCAT(p.id) AS palavras_adivinhadas
-    FROM Jogadores j
-    LEFT JOIN palavras_adivinhadas_por_jogador pa ON j.id = pa.id_jogador
-    LEFT JOIN Palavras p ON pa.id_palavra = p.id
-    WHERE j.nome = ?
-    GROUP BY j.id, j.nome, j.score
+  // Primeira consulta: Recuperar score do jogador
+  const scoreQuery = `
+    SELECT id AS jogador_id, nome, score
+    FROM Jogadores
+    WHERE nome = ?
   `;
 
-  // Executar a consulta
-  db.get(query, [playerName], (err, row) => {
+  db.get(scoreQuery, [playerName], (err, row) => {
     if (err) {
-      console.error('Error retrieving player data:', err.message);
+      console.error('Error retrieving player score:', err.message);
       callback(err, null);
       return;
     }
 
     // Verificar se o jogador foi encontrado
     if (row) {
-      // Transformar a lista de IDs em um array
-      const palavrasAdivinhadas = row.palavras_adivinhadas ? row.palavras_adivinhadas.split(',') : [];
-
-      // Retornar os dados do jogador
-      callback(null, {
+      const playerData = {
         nome: row.nome,
         score: row.score,
-        palavras_adivinhadas: palavrasAdivinhadas
+        palavras_adivinhadas: []
+      };
+
+      // Segunda consulta: Recuperar IDs das palavras adivinhadas pelo jogador
+      const wordsQuery = `
+        SELECT id_palavra
+        FROM palavras_adivinhadas_por_jogador
+        WHERE id_jogador = ?
+      `;
+
+      db.all(wordsQuery, [row.jogador_id], (err, rows) => {
+        if (err) {
+          console.error('Error retrieving guessed words:', err.message);
+          callback(err, null);
+          return;
+        }
+
+        // Transformar a lista de IDs em um array
+        playerData.palavras_adivinhadas = rows.map(row => row.id_palavra);
+
+        // Retornar os dados do jogador
+        callback(null, playerData);
+
+        // Fechar a conexão com o banco de dados
+        db.close((closeErr) => {
+          if (closeErr) {
+            console.error('Error closing the database:', closeErr.message);
+          } else {
+            console.log('Database connection closed.');
+          }
+        });
       });
     } else {
       callback(null, null); // Jogador não encontrado
-    }
 
-    // Fechar a conexão com o banco de dados
-    db.close((closeErr) => {
-      if (closeErr) {
-        console.error('Error closing the database:', closeErr.message);
-      } else {
-        console.log('Database connection closed.');
-      }
-    });
+      // Fechar a conexão com o banco de dados
+      db.close((closeErr) => {
+        if (closeErr) {
+          console.error('Error closing the database:', closeErr.message);
+        } else {
+          console.log('Database connection closed.');
+        }
+      });
+    }
   });
 };

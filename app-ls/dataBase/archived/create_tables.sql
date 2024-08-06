@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS Jogadores (
     id INTEGER PRIMARY KEY,
     nome TEXT UNIQUE NOT NULL,
-    score INTEGER
+    score INTEGER DEFAULT 0      
 );
 
 -- Cria a tabela Palavras

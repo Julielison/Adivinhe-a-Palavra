@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 // Caminho para o banco de dados
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const dbPath = path.join(__dirname, 'data.db');
+const dbPath = path.join(__dirname, './data.db');
 
 // Caminho para o arquivo SQL com as inserções
 const sqlFilePath = path.join(__dirname, 'insert_words.sql');
