@@ -38,21 +38,21 @@ const createDatabase = () => {
       console.log('Database and tables created successfully.');
 
       // Inserir dados de exemplo (opcional)
-      const stmt = db.prepare("INSERT INTO Jogadores (id, nome) VALUES (?, ?)");
-      stmt.run(1, "Alice");
-      stmt.run(2, "Bob");
+      const stmt = db.prepare("INSERT INTO Players (name, password) VALUES (?, ?)");
+      stmt.run("Alice", 7589);
+      stmt.run("Bob", 1234);
       stmt.finalize((finalizeErr) => {
         if (finalizeErr) {
           console.error('Error finalizing statement:', finalizeErr.message);
         }
 
         // Consultar e exibir dados
-        db.each("SELECT id, nome FROM Jogadores", (err, row) => {
+        db.each("SELECT id, name FROM Players", (err, row) => {
           if (err) {
             console.error('Error fetching data:', err.message);
             return;
           }
-          console.log(`${row.id}: ${row.nome}`);
+          console.log(`${row.id}: ${row.name}`);
         }, (err) => {
           if (err) {
             console.error('Error completing query:', err.message);

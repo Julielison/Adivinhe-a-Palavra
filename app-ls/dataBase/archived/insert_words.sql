@@ -1,4 +1,4 @@
-INSERT INTO Palavras (palavra, dica) VALUES
+INSERT INTO Words (word, hint) VALUES
 ('Gato', 'Animal doméstico que mia'),
 ('Cachorro', 'Animal doméstico que late'),
 ('Maçã', 'Fruta vermelha ou verde'),

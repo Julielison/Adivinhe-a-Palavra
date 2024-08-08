@@ -13,13 +13,13 @@ const db = new sqlite3.Database(dbPath);
 // Função para inserir palavras adivinhadas
 const insertAdivinhadas = () => {
   const query = `
-    INSERT INTO palavras_adivinhadas_por_jogador (id_jogador, id_palavra) VALUES
+    INSERT INTO Guessed_Words (id_player, id_word) VALUES
     (1, 1),  
     (1, 3),
     (1, 5),
     (1, 7);
 
-    INSERT INTO palavras_adivinhadas_por_jogador (id_jogador, id_palavra) VALUES
+    INSERT INTO Guessed_Words (id_player, id_word) VALUES
     (2, 2),
     (2, 4),
     (2, 6),
@@ -30,7 +30,7 @@ const insertAdivinhadas = () => {
     if (err) {
       console.error('Error inserting data:', err.message);
     } else {
-      console.log('Data inserted successfully into palavras_adivinhadas_por_jogador.');
+      console.log('Data inserted successfully into Guessed_Words.');
     }
 
     // Fechar a conexão com o banco de dados

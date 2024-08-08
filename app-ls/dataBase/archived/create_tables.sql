@@ -1,22 +1,23 @@
 -- Cria a tabela Jogadores
-CREATE TABLE IF NOT EXISTS Jogadores (
+CREATE TABLE IF NOT EXISTS Players (
     id INTEGER PRIMARY KEY,
-    nome TEXT UNIQUE NOT NULL,
-    score INTEGER DEFAULT 0      
+    name TEXT UNIQUE NOT NULL,
+    score INTEGER DEFAULT 0,
+    password TEXT NOT NULL
 );
 
 -- Cria a tabela Palavras
-CREATE TABLE IF NOT EXISTS Palavras (
+CREATE TABLE IF NOT EXISTS Words (
     id INTEGER PRIMARY KEY,
-    palavra TEXT UNIQUE NOT NULL,
-    dica TEXT NOT NULL
+    word TEXT UNIQUE NOT NULL,
+    hint TEXT NOT NULL
 );
 
 -- Cria a tabela palavras_adivinhadas_por_jogador
-CREATE TABLE IF NOT EXISTS palavras_adivinhadas_por_jogador (
-    id_jogador INTEGER,
-    id_palavra INTEGER,
-    PRIMARY KEY (id_jogador, id_palavra),
-    FOREIGN KEY (id_jogador) REFERENCES Jogadores(id),
-    FOREIGN KEY (id_palavra) REFERENCES Palavras(id)
+CREATE TABLE IF NOT EXISTS Guessed_Words (
+    id_player INTEGER,
+    id_word INTEGER,
+    PRIMARY KEY (id_player, id_word),
+    FOREIGN KEY (id_player) REFERENCES Players(id),
+    FOREIGN KEY (id_word) REFERENCES Words(id)
 );
