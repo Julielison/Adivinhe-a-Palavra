@@ -12,6 +12,7 @@
     "vite": "^5.3.4"
   },
   "dependencies": {
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   }
 }

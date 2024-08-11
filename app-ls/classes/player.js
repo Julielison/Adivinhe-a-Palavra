@@ -4,14 +4,12 @@ export default class Player {
         this.name = name;
         this.score = 0;
         this.password = password;
-        this.guessedWords = [];
+        this.unguessedWordsId = [];
     }
-
 
     getName() {
         return console.log(this.name);
     }
-
 
     getScore() {
         return this.score;
@@ -32,6 +30,25 @@ export default class Player {
 
     getGuessedWords() {
         return this.GuessedWords;
+    }
+
+    addUnguessedWords(unguessedWordsId){
+        unguessedWordsId.forEach(unguessedWordId => this.unguessedWordsId.push(unguessedWordId.id))
+        console.log(this.unguessedWordsId)
+    }
+
+    // Remove o id de uma palavra adivinhada
+    removeIdGuessedWord(id){
+        this.unguessedWordsId = this.unguessedWordsId.filter(num => num !== id);
+
+        console.log(this.unguessedWordsId);
+
+    }
+    
+    // Retorna aleatoriamente o id de uma palavra não adivinhada
+    getRandomIdWord(){
+        const randomIndex = Math.floor(Math.random() * this.unguessedWordsId.length);
+        return this.unguessedWordsId[randomIndex]
     }
 
 }
