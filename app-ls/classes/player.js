@@ -22,17 +22,7 @@ export default class Player {
         this.guessedWords = guessedWords
     }
 
-    addGuessedWord(...word) {
-        word.forEach(word => {
-            this.GuessedWords.push(word);
-        });
-    }
-
-    getGuessedWords() {
-        return this.GuessedWords;
-    }
-
-    addUnguessedWords(unguessedWordsId){
+    addIdUnguessedWords(unguessedWordsId){
         unguessedWordsId.forEach(unguessedWordId => this.unguessedWordsId.push(unguessedWordId.id))
         console.log(this.unguessedWordsId)
     }
@@ -40,9 +30,6 @@ export default class Player {
     // Remove o id de uma palavra adivinhada
     removeIdGuessedWord(id){
         this.unguessedWordsId = this.unguessedWordsId.filter(num => num !== id);
-
-        console.log(this.unguessedWordsId);
-
     }
     
     // Retorna aleatoriamente o id de uma palavra não adivinhada

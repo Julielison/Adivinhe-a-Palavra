@@ -25,7 +25,7 @@ async function main() {
 
             // Retorna os ids das palavras não adivinhadas com base no id do jogador
             let unguessedWords = await dbHandler.getIdFromUnGuessedWordsByPlayerId(playerInfo.id);
-            player.addUnguessedWords(unguessedWords)
+            player.addIdUnguessedWords(unguessedWords)
         
         // Caso não exista
         } else {
@@ -43,7 +43,7 @@ async function main() {
     } catch (err) {
         console.error('Error:', err.message);
     } finally {
-        await dbHandler.close();
+        dbHandler.close();
     }
 }
 
