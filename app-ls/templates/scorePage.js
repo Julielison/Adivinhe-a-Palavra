@@ -1,6 +1,5 @@
 import homePage from '../templates/homepage.js';
-
-
+import getTopPlayers from '../dataBase/getTopPlayers.js';
 
 
 
