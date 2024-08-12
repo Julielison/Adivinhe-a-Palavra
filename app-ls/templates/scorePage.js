@@ -1,10 +1,10 @@
 import homePage from '../templates/homepage.js';
-import DataBase from '../classes/dataBase.js';
+// import DataBase from '../classes/dataBase.js';
 
-// // Cria uma conexão o database
-// const db = new DataBase();
+// Cria uma conexão o database
+const db = new DataBase();
 
-// const data = await db.getTopPlayers();
+const data = await db.getTopPlayers();
 
 
 function createScorePage() {
@@ -66,12 +66,12 @@ function createTable() {
 
     table.appendChild(tr);
 
-    // let data = localStorage;
-    // data = Object.entries(data);
-    // data = data.filter(item => item[0] !== 'playerScore');
-    // data = data.map(item => JSON.parse(item[1]));
-    // data = data.sort((a, b) => b.score - a.score);
-    // data = data.slice(0, 10);
+    let data = localStorage;
+    data = Object.entries(data);
+    data = data.filter(item => item[0] !== 'playerScore');
+    data = data.map(item => JSON.parse(item[1]));
+    data = data.sort((a, b) => b.score - a.score);
+    data = data.slice(0, 10);
 
     let rank = 1;
     for (let i = 0; i < data.length; i++) {
