@@ -6,8 +6,7 @@ import { runGame } from '../templates/gamePage.js';
 import createAboutPage from '../templates/about.js';
 
 
-
-document.body.onload = homePage();
+document.body.onload = homePage;
 
 
 

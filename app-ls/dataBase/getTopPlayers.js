@@ -1,45 +1,27 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-import path from 'path';
-import { fileURLToPath } from 'url';
+// import Player from './teste.js'; // Ajuste o caminho conforme necessário
 
-async function getTopPlayers() {
-    // Caminho para o banco de dados
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    const dbPath = path.join(__dirname, '../classes/data.db');
+// async function getTopPlayers() {
+//     try {
+//         const topPlayers = await Player.findAll({
+//             attributes: ['name', 'score'],
+//             order: [['score', 'DESC']],
+//             limit: 10
+//         });
 
-    // Abra a conexão com o banco de dados
-    const db = await open({
-        filename: dbPath,
-        driver: sqlite3.Database
-    });
+//         return topPlayers;
+//     } catch (err) {
+//         console.error('Error fetching top players:', err.message);
+//         throw err;
+//     }
+// }
 
-    const query = `
-        SELECT name, score
-        FROM Players
-        ORDER BY score DESC
-        LIMIT 10
-    `;
+// async function displayTopPlayers() {
+//     try {
+//         const topPlayers = await getTopPlayers();
+//         console.log('Top Players:', topPlayers);
+//     } catch (err) {
+//         console.error('Error displaying top players:', err.message);
+//     }
+// }
 
-    try {
-        const topPlayers = await db.all(query);
-        return topPlayers;
-    } catch (err) {
-        console.error('Error executing SQL query:', err.message);
-        throw err;
-    } finally {
-        // Feche a conexão com o banco de dados
-        await db.close();
-        console.log('Database connection closed.');
-    }
-}
-
-// // Exemplo de como usar a função e exibir o resultado
-// getTopPlayers().then(players => {
-//     console.log(players);
-// }).catch(err => {
-//     console.error('Failed to get top players:', err.message);
-// });
-
-export default getTopPlayers;
+// displayTopPlayers();

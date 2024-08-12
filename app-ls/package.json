@@ -12,7 +12,9 @@
     "vite": "^5.3.4"
   },
   "dependencies": {
+    "express": "^4.19.2",
     "sequelize": "^6.37.3",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   }
 }
