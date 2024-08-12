@@ -10,5 +10,9 @@
   },
   "devDependencies": {
     "vite": "^5.3.4"
+  },
+  "dependencies": {
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
   }
 }
