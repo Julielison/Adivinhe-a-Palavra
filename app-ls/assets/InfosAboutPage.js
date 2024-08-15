@@ -13,8 +13,8 @@ const infosDev = {
         
         
     },
-    maria: {
-        name: 'Maria',
+    Julielison: {
+        name: 'Julielison',
         role: 'Back-end Developer',
         description: 'I am a back-end developer and I am responsible for the development of the application logic.',
         icon: 'assets/icon2.jpg',
@@ -24,8 +24,8 @@ const infosDev = {
         }
       
     },
-    joao: {
-        name: 'João',
+    Flavio: {
+        name: 'Flávio',
         role: 'Designer',
         description: 'I am a designer and I am responsible for the development of the application layout.',
         icon: 'assets/icon3.jpg',
