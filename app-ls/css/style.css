@@ -147,14 +147,14 @@
 body {
     font-family: Arial, sans-serif;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background-color: var(--terciary-color);
     display: flex;
     flex-direction: column;
     transition: 800ms ease-in-out;
     gap: 2rem;
 
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 0;
 
 
@@ -176,7 +176,7 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 200px;
+    height: 100px;
     padding: 20px 50px;
     background-color: var(--primary-color);
     color: var(--on-primary-color);
@@ -343,7 +343,7 @@ header .nav .navList .navItem:active {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     gap: 1rem;
 }
 
@@ -1015,7 +1015,7 @@ header .nav .navList .navItem:active {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     gap: 20px;
     padding: 20px;
 }
@@ -1111,7 +1111,7 @@ header .nav .navList .navItem:active {
 .aboutPage {
     display: grid;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     gap: 20px;
     padding: 20px;
 
